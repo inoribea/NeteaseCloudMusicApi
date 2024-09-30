@@ -1,3 +1,14 @@
+# 关于本仓库
+这里是由yiktllw修改过的NeteaseCloudMusicApi，主要添加了一些新的api，供XCMusic使用。
+
+## 已添加的API
+- `/api/album/v3/detail`:手机端专辑api，必选参数:专辑ID: `id`，用法: `/api/album/v3/detail?id=xxx`
+- `/api/v2/artist/songs`: 新版歌手歌曲api。
+必选参数:  歌手ID: `id`，
+可选参数: 开始获取的位置: `offset`，默认为0； 一次获取的歌曲数量: `limit`，默认为100。
+用法: `/api/v2/artist/songs?id=xxx` `/api/v2/artist/songs?id=xxx&offset=10&limit=10`
+
+
 # 网易云音乐 API
 
 网易云音乐 Node.js API service
