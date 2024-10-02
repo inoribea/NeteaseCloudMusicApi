@@ -8,5 +8,10 @@ module.exports = (query, request) => {
     cache_key: require('../util/cache_key')(query.id),
     header: '',
   }
-  return request(`/api/album/v3/detail`, data, createOption(query, 'weapi'))
+  return request(
+    'POST',
+    `/api/album/v3/detail`,
+    data,
+    createOption(query, 'weapi'),
+  )
 }
