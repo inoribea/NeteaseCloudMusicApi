@@ -9,10 +9,5 @@ module.exports = (query, request) => {
     e_r: query.er || true,
     header: query.header || '',
   }
-  return request(
-    'POST',
-    `/api/v2/artist/songs`,
-    data,
-    createOption(query, 'weapi'),
-  )
+  return request(`/api/v2/artist/songs`, data, createOption(query, 'weapi'))
 }

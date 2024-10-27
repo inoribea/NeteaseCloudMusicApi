@@ -3,13 +3,9 @@
 const createOption = require('../util/option.js')
 module.exports = async (query, request) => {
   let result = await request(
-    'POST',
     `/api/login/token/refresh`,
     {},
-    {
-      ...createOption(query, 'weapi'),
-      uaType: 'pc',
-    },
+    createOption(query),
   )
   if (result.body.code === 200) {
     result = {
