@@ -9,6 +9,9 @@ const fs = require('fs')
 const path = require('path')
 const tmpPath = require('os').tmpdir()
 const { cookieToJson, cookieObjToString, toBoolean } = require('./index')
+if (!fs.existsSync(path.resolve(tmpPath, 'anonymous_token'))) {
+  fs.writeFileSync(path.resolve(tmpPath, 'anonymous_token'), '', 'utf-8')
+}
 const anonymous_token = fs.readFileSync(
   path.resolve(tmpPath, './anonymous_token'),
   'utf-8',
@@ -187,8 +190,8 @@ const createRequest = (uri, data, options) => {
             options.e_r != undefined
               ? options.e_r
               : data.e_r != undefined
-              ? data.e_r
-              : APP_CONF.encryptResponse // 用于加密接口返回值
+                ? data.e_r
+                : APP_CONF.encryptResponse // 用于加密接口返回值
           data.e_r = toBoolean(data.e_r)
           encryptData = encrypt.eapi(uri, data)
           url = APP_CONF.apiDomain + '/eapi/' + uri.substr(5)
